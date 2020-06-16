@@ -189,6 +189,29 @@ let mangSanPham = [
 
 let mangDienThoaiSony = mangSanPham.filter(sanPham => sanPham.hangSX === 'SONY');
 console.log(mangDienThoaiSony);
-let mangTren50000 = mangSanPham.filter(sanPham => sanPham.Gia > 50000);
+let mangTren50000 = mangSanPham.filter(item => { return item.Gia > 50000});
 console.log(mangTren50000);
 
+//find: Trả ra đối tượng đầu tiên thỏa điều kiện arrow function thường dùng cho Id, nếu không thỏa trả ra undefine
+let sp = mangSanPham.find(item => item.maSp === 8);
+console.log(sp);
+//findIndex:Tưởng tự find tuy nhiên trả ra vị trí phần tử tìm thấy, không timf thấy trả về -1
+let index = mangSanPham.findIndex(item => item.maSP ===8);
+console.log(index);
+if(index !== -1){
+
+}
+console.log(mangSanPham)
+//map():tạo ra 1 mảng giá trị mới từ mảng củ
+var mangCardSanPham = mangSanPham.map((item,index) =>{
+    return `<div class="card text left">
+    <h4 class="card-tittle">${item.TenSP}</h4>  
+    </div>`
+})
+console.log(mangCardSanPham)
+//reduce():tạo ra giá trị mới từ 1 cái mảng
+
+var tongTien = mangSanPham.reduce((tongTien,item,index)=>{
+    return tongTien += item.Gia;
+},0)
+console.log(tongTien);
